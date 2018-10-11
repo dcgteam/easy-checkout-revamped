@@ -1,0 +1,64 @@
+.header {
+  background: $color-clear;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid $color-light;
+  .container>.row {
+    border-bottom: none;
+    padding-top: 1em;
+    padding-bottom: 28px;
+  }
+  .column {
+    margin-bottom: 0;
+  }
+  .logo {
+    display: block;
+    background-image: url($path-logo);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 86px;
+    max-width: 169px;
+    margin:0;
+    padding: 0;
+    outline: 0;
+
+    // Essas adaptações abaixo foram feitas como teste para a restoque. Testar com outros logos.
+    height: 80px;
+    max-width: 120px;
+    position: relative;
+    top: 6px;
+    left: 20px;
+
+    @include hide-text;
+    @include media( $tablet-max ) {
+    }
+    @include media( $tablet-and-small ) {
+      height: 62px;
+      background-size: 70%;
+      top: -2px;
+    }
+    @include media($mobile-only) {
+      height: 45px;
+      left: -14px;
+      background-size: 50%;
+      top: -6px;
+    }
+  }
+  .safe-mark {
+    margin-right: 22px;
+    line-height: 86px;
+    @include media( $tablet-max ) {
+      margin-right: 0;
+        font-size: 12px;
+      strong {
+      }
+    }
+    @include media( $tablet-and-small ) {
+      line-height: 62px;
+    }
+    @include media($mobile-only) {
+      line-height: 45px;
+      margin-right: 0;
+    }
+  }
+}

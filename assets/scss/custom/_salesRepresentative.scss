@@ -1,0 +1,136 @@
+.sales-representative {
+    margin-bottom: 1rem;
+    h3 {
+        margin-bottom: 0;
+    }
+    
+    .wrapper-btn {
+        position: relative;
+
+        .icon i.fa {
+            //@extend .fa-caret-up;
+        }
+        &>.btn {
+            height: 56px;
+            overflow: hidden;
+            .representative {
+                position: relative;
+                .photo {
+                    width: 40px;
+                    height: 40px;
+                    display: block;
+                    position: absolute;
+                    left: -4px;
+                    top: -1px;
+                    background-color: white;
+                    background-size: cover;
+                    border-radius: 35px;
+                    background-position: 50% 50%;
+                }
+                .info {
+                    padding-top: 4px;
+                    padding-left: 45px;
+                    text-align: left;
+                    color: black;
+                    .name,
+                    .email {
+                        display: block;
+                    }
+                    .name {
+                        font-size: 1em;
+                    }
+                    .email {
+                        font-size: 0.8em;
+                    }
+                }
+            }
+            .icon,
+            .title {
+                vertical-align: middle;
+            }
+            .icon {
+                height: 38px;
+                width: 48px;
+                position: absolute;
+                top: 8px;
+                right: 0;
+                text-align: center;
+                border-left: 1px solid $color-light;
+                i.fa {
+                    //color: $color-darker;
+                    //@extend .fa-caret-up;
+                    //font-size: 2em;
+                    //line-height: 38px;
+                }
+            }
+        }
+        .more-representatives {
+            height: 0;
+            opacity: 0;
+            //visibility: hidden;
+            position: absolute;
+            bottom: 58px;
+            border-bottom: none;
+            z-index: 2;
+            transition: all .2s ease-in-out;
+
+            ul {
+                padding: 0;
+                margin: 0;
+                li {
+                    padding-bottom: 1em;
+                    margin: 0;
+                    padding-top: 1em;
+                    border-top: 1px solid #F2F2F2;
+                    list-style: none;
+                    .sale {
+
+                    }
+                }
+            }
+
+        }
+        &.opened {
+            .more-representatives {
+                height: 150px;
+                overflow: auto;
+                opacity: 1;
+                //visibility: visible;
+            }
+
+            .icon i.fa {
+                //@extend .fa-caret-down;
+            }
+        }
+    }
+}
+
+.wrapper-representative {
+    margin-bottom: 1em;
+    &.regular {
+        .btn {
+            cursor: default;
+        }
+    }
+    .btn-outline.readonly {
+        cursor: default;
+    }
+}
+
+.wrapper-search-representative {
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    background-color: #F2F2F2;
+    padding-top: 1em;
+}
+
+.representative-list-empty {
+    text-align: center;
+    margin-top: 1em;
+}
+.customer-list-empty {
+    li {
+        text-align: center;
+        font-size: 0.9em;
+    }
+}

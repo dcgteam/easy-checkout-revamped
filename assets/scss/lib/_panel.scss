@@ -1,0 +1,67 @@
+
+.panel {
+  background: $color-clear;
+  border: 1px solid $color-light;
+  /*border-left: 3px solid $color-success;*/
+  padding: 1rem 1.4rem 1.4rem;
+  margin-bottom: 1em;
+  @include clearfix;
+}
+
+.panel-light {
+  border-top: 3px solid $color-darkened;
+}
+
+.panel-header {
+  @extend h4;
+  font-weight: 700;
+  color: $color-darker;
+  @include clearfix;
+}
+.panel-footer {
+  background: $color-light;
+  margin: 0 -1rem -1rem;
+  padding: 1rem;
+  font-size: 0.85em;
+  border-top: 2px solid $color-dark;
+  @include clearfix;
+}
+.panel-content {
+  padding: 1rem 0;
+}
+.panel-title {
+  float: left;
+  line-height: 24px;
+}
+.panel-buttons {
+  float: right;
+  .btn,button {
+    height: 100%;
+    margin-bottom: 0;
+  }
+}
+.panel-outhead {
+  border-top: none;
+  .panel-header {
+    background: $color-light;
+    color: $color-dark;
+    border-bottom: 3px solid shade($color-primary, $color-shade);
+  }
+}
+.bigblock {
+  overflow: hidden;
+  padding: 2em;
+  background: $color-lightness;
+  border: 2px dashed shade($color-lightness,5%);
+}
+
+
+.message {
+  &.success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    padding: 1em;
+    border: 1px solid #d6e9c6;
+  }
+}

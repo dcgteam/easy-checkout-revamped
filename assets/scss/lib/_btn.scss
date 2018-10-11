@@ -1,0 +1,294 @@
+// ------------------------------------
+// ---------------------- BOTOES ------
+// ------------------------------------
+
+
+%disabled {
+  background: $color-darker !important;
+  opacity: 1;
+  font-weight: 500;
+  color: $color-clear;
+  border-color: $color-darkened !important;
+  cursor: default;
+  .obs {
+    color: $color-clear;
+  }
+}
+
+$color-button-a: lighten($color-button, 5%) !default;
+$color-button-b: darken($color-button, 5%) !default;
+$color-button-c: shade( $color-button, 10%) !default;
+$button-lightness: 10%;
+
+.btn,button {
+  @include user-select(none);
+  outline: none;
+  background-color: $color-button;
+  @if $buttons-gradient {
+    @include linear-gradient( $color-button-a, $color-button-b);
+    border-bottom: 2px solid;
+  }
+  background-image: none; // Tirar gradiente para simulação do Easy revamped
+  color: $color-text-button;
+  border: none;
+  border-color: $color-button-c;
+  position: relative;
+  padding: 0.6em 0.8em;
+  line-height: 1.2em;
+  display: inline-block;
+  // font-size: rem(14);
+  cursor: pointer;
+  text-align: center;
+  border-radius: $buttons-border-radius;
+  // @extend .text-push;
+  // @extend .font-face-title;
+  // @include transition(all $time $fx);
+  &:hover {
+    @include transition-duration($time);
+  }
+  &:hover,&:focus,&.btn-hover,&.btn-focus {
+    text-decoration: none;
+    @if $buttons-gradient {
+      @include linear-gradient(  tint( $color-button-a , $button-lightness) , tint( $color-button-b, $button-lightness));
+    }
+    background-color: tint($color-button, 10%);
+    background-image: none; // Tirar gradiente para simulação do Easy revamped
+  }
+  &:active,&.btn-active {
+    @if $buttons-gradient {
+      @include linear-gradient(  lighten( shade($color-button,8%) , 5%) , darken(shade($color-button,8%), 5%));
+    }
+    border-color: shade( $color-button, 10%);
+  }
+  &[disabled] {
+    @extend %disabled;
+  }
+  &.btn-text {
+      color: $color-button;
+      &:hover {
+        color: $color-button;
+        text-decoration: underline;
+      }
+  }
+  &.btn-error {
+    background-color: $color-error;
+    @include linear-gradient(  lighten($color-error, 5%) ,darken($color-error, 5%));
+    &:hover,&:focus,&.btn-hover,&.btn-focus {
+      @include linear-gradient(  lighten( tint($color-error,10%) , 5%) ,darken(tint($color-error,10%), 5%));
+      border-color: shade( $color-error, 5%);
+    }
+    &:active,&.btn-active {
+      @include linear-gradient(  lighten( shade($color-error,8%) , 5%) , darken(shade($color-error,8%), 5%));
+      border-color: shade( $color-error, 10%);
+    }
+  }
+  &:last-child {
+    margin-bottom: 1px;
+  }
+  .obs {
+    display: block;
+    margin-top: 2px;
+    text-shadow: none;
+    color: $color-clear;
+  }
+}
+
+@mixin btn($name, $color, $color-font:$color-clear) {
+  .btn-#{$name} {
+    background-color: $color;
+    border-bottom-color: shade( $color, $color-shade);
+    @if $buttons-gradient {
+      @include linear-gradient(  lighten($color, 5%) ,darken($color, 5%));
+    }
+    color: $color-font;
+    &:hover,&:focus,&.btn-hover,&.btn-focus {
+      @if $buttons-gradient {
+        @include linear-gradient(  lighten( tint($color,10%) , 5%) ,darken(tint($color,10%), 2%));
+      }
+      border-color: shade( $color, 5%);
+    }
+    &:active,&.btn-active {
+      @if $buttons-gradient {
+        @include linear-gradient(  lighten( shade($color,5%) , 5%) , darken(shade($color,2%), 2%));
+      }
+      border-color: darken(shade($color,5%), 2%);
+    }
+    &[disabled] {
+      @extend %disabled;
+    }
+    &.btn-text {
+      background: transparent;
+      color: shade( $color, $color-shade);
+      &:hover,&:focus,&.btn-hover,&.btn-focus {
+        color: $color;
+      }
+    }
+    &.btn-outline {
+      background: tint( $color , 80% );
+      color: shade( $color, $color-shade);
+      border-color: $color;
+      &:hover,&:focus,&.btn-hover,&.btn-focus {
+        background: tint( $color , 95% );
+        color: $color;
+      }
+    }
+    .badge {
+      color: $color;
+    }
+    .obs {
+      color: tint( $color, 70%);
+    }
+  }
+}
+
+@include btn('default',$color-empty);
+@include btn('success',$color-success);
+@include btn('error',$color-error);
+@include btn('attention',$color-attention);
+@include btn('warning',$color-warning);
+@include btn('link',$color-text-link);
+
+
+.btn-default {
+  color: $color-darker;
+  border-color: $color-light;
+  border-style: solid;
+  border-width: 1px;
+  @if $buttons-gradient {
+    border-bottom-width: 2px;
+  }
+  //text-shadow: 0 -1px 0 $color-empty;
+  &:hover,&:focus,&.btn-hover,&.btn-focus {
+    border-color: shade( $color-light, 5%);
+  }
+  &:active,&.btn-active {
+    border-color: shade( $color-light, 9%);
+  }
+  .obs {
+    color: tint( $color-dark, 25%);
+  }
+}
+
+.btn-outline {
+  @extend .btn-default;
+  background: $color-clear;
+  color: $color-text-link;
+  text-shadow: none;
+  .badge {
+    background: $color-text-link;
+    color: $color-clear;
+  }
+  &:hover,&:focus,&.btn-hover,&.btn-focus {
+    color: $color-text-link;
+  }
+  &:active,&.btn-active {
+    color: $color-text-link;
+  }
+}
+
+
+
+.btn-text {
+  background: none;
+  border: none;
+  &:hover,&:active,&:focus {
+    background: none;
+  }
+}
+
+
+// ------------------------------------
+// ---------------------- tamanhos ----
+// ------------------------------------
+.btn-huge {
+  font-size: 24px;
+  .obs {
+    font-size: 0.5em;
+  }
+}
+.btn-big {
+  font-size: 18px;
+}
+.btn-small {
+  font-size: 12px;
+  font-weight: 500;
+}
+.btn-tiny {
+  font-size: 10px;
+  font-weight: 300;
+  text-shadow: none;
+}
+.btn-wide {
+  width: 100%;
+}
+
+// ------------------------------------
+// ---------------------- icones ------
+// ------------------------------------
+@mixin btn-icon($name,$icon) {
+  .btn-icon-#{$name} {
+    &:before {
+      content: $icon;
+      @extend .fa;
+      margin-right: 0.5em;
+    }
+    &.icon-after{
+      &:before {
+        content: none;
+      }
+      &:after {
+        @extend .fa;
+        content: $icon;
+        margin-left: 0.5em;
+      }
+    }
+  }
+}
+
+@include btn-icon("cart",$fa-var-shopping-cart);
+@include btn-icon("search",$fa-var-search);
+@include btn-icon("plus",$fa-var-plus-circle);
+@include btn-icon("briefcase",$fa-var-briefcase);
+@include btn-icon("heart",$fa-var-heart-o);
+@include btn-icon("cash",$fa-var-money);
+@include btn-icon("help",$fa-var-question-circle);
+@include btn-icon("talk",$fa-var-comments);
+@include btn-icon("mail",$fa-var-envelope);
+@include btn-icon("truck",$fa-var-truck);
+
+
+
+// ------------------------------------
+// ---------------------- dropdown ----
+// ------------------------------------
+.dropdown {
+  position: absolute;
+  top: 100%;
+  z-index: 100;
+  background-color: $color-empty;
+  border: 5px solid #28c9ff;
+  padding: 1em;
+  @include clearfix;
+}
+
+@mixin icon-arrow() {
+  &:before {
+    content: "";
+    display: inline-block;
+    vertical-align: 5%;
+    margin-right: 6px;
+  }
+}
+.dropdown-icon {
+  @include icon-arrow();
+  &:before {
+    @include triangle(8px, rgba($color-text-light,0.7), down);
+  }
+}
+.dropdown-icon-right {
+  @include icon-arrow();
+  &:before {
+    @include triangle(8px, rgba($color-text-light,0.5), right);
+    top: 0px;
+  }
+}

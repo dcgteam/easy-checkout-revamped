@@ -1,0 +1,153 @@
+//Partes utilizadas no widget
+#scene {
+  // position: absolute;
+  // min-height: 100%;
+  // width: 100%;
+  // -webkit-transform: translateZ(0);
+  .container {
+    @include transition(opacity 0.3s $fx 0.5s);
+    opacity: 0;
+  }
+  &.delivery,&.payment,&.confirmation {
+    .container {
+      opacity: 1;
+    }
+  }
+  .checkout-step.delivery {
+    // @extend .current-step;
+  }
+  &.delivery {
+    .checkout-step.delivery {
+      @extend .current-step;
+    }
+    .resume-address,.resume-delivery {
+      display: none;
+    }
+  }
+  &.payment.types {
+    .checkout-step.delivery,.checkout-step.methods {
+      @extend .prev-step;
+    }
+    .checkout-step.payment {
+      @extend .current-step;
+    }
+  }
+  &.payment.methods {
+    .checkout-step.delivery {
+      @extend .prev-step;
+    }
+    #checkout-steps {
+      margin-bottom: 0;
+    }
+    .checkout-step.methods {
+      @extend .current-step;
+    }
+  }
+  &.confirmation {
+    .checkout-step.delivery,.checkout-step.payment,.checkout-step.methods {
+      @extend .prev-step;
+    }
+    .checkout-step.confirmation {
+      @extend .current-step;
+    }
+  }
+}
+
+.checkout-steps {
+  $time: 0.2s;
+  position: relative;
+  height: auto;
+  overflow: hidden;
+  // overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  .checkout-step {
+    padding: 0;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    z-index: -10;
+    width: 0;
+    overflow: hidden;
+    @include transform(translateX(150%));
+    @include transition(transform $time $fx,opacity $time $fx);
+    &.current-step {
+      z-index: 1;
+      visibility: visible;
+      position: static;
+      @include transform(translateX(0));
+      opacity: 1;
+      width: 100%;
+    }
+    &.prev-step {
+      @include transform(translateX(-150%));
+    }
+  }
+}
+
+.tem-um-endereco {
+  .nenhum-endereco {
+    display: none;
+  }
+  .um-endereco {
+    display: block;
+  }
+  .lista-envios {
+    display: block;
+  }
+  .msg-cadastre {
+    display: none;
+  }
+  .lista-endereco {
+    display: none;
+  }
+}
+.tem-mais-endereco {
+  .lista-endereco {
+    display: block;
+  }
+}
+.um-endereco {
+  .pessoal {
+    display: none;
+  }
+}
+.sem-cadastro {
+  button[modal-open*='modal-new-address'] {
+    display: none;
+  }
+  .um-endereco {
+    .pessoal {
+      display: block;
+    }
+    h4 {
+      display: none;
+    }
+
+  }
+}
+.modal-new-address {
+  .scene-b {
+    display: none;
+  }
+}
+
+.modal-semcadastro {
+  .scene-a {
+    display: none;
+  }
+}
+
+.checkout {
+  a[href*="finish.html"]{
+    display: none;
+  }
+}
+
+.modal-delivery-free {
+  img {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,134 @@
+.modal {
+  height: 0;
+  opacity: 0;
+  @include transform(translateY(100%));
+  @include transition(all $time $fx);
+  position: absolute;
+  border-radius: 7px;
+  bottom: 0;
+  overflow: hidden;
+  &>:last-child {
+    margin-bottom: 0;
+  }
+  .modal-close {
+    &:before{
+      content: "\d7";
+    }
+    position: absolute;
+    // padding: 0 0 2px 1px;
+    right: 0;
+    top: 0;
+    font-size: 2em;
+    // background: $color-lightness;
+    color: $color-darkened;
+    $size: 64px;
+    line-height: $size - 2;
+    height: $size;
+    width: $size;
+    text-align: center;
+    // border-radius: 3px;
+    //box-shadow: 0 1px 2px $color-shadow;
+    text-decoration: none;
+    cursor: pointer;
+    @include transition(all $time $fx);
+    &:hover {
+      background: shade($color-lightness,10%);
+      color: shade($color-darkened,20%);
+    }
+  }
+}
+.modal-show {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+  background: $color-clear;
+  padding: 28px;
+  box-shadow: 0 1px 2px $color-shadow;
+  z-index: 2000;
+  opacity: 1;
+  height: auto;
+  bottom: initial;
+  @include transform(translateY(0));
+  @include media($mobile-only) {
+    top: 0;
+    margin: 0;
+    width: auto;
+    padding: 1em;
+    border-radius: 0;
+  }
+  @include media($tablet) {
+    margin-top: 10px;
+    width: 90%;
+  }
+  @include media( $small ) {
+    margin-top: 30px;
+    width: 80%;
+  }
+  @include media($desktop) {
+    margin-top: 20px;
+    width: $max-width*0.75;
+  }
+}
+
+#overlay {
+  @include transition(all $time/5 $fx);
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 0;
+  width: 100%;
+  background: rgba(1,6,10,0.3);
+  z-index: 1999;
+  &>.close {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  &.jump-up {
+    z-index: 2010;
+  }
+  &.overlay-show {
+    height: 100%;
+  }
+}
+
+.modal-header {
+  @include clearfix;
+  border-bottom: 1px solid $color-light;
+  padding: 0 65px 0 2em;
+  margin: -2em -2em 1em;
+  min-height: 65px;
+  .modal-title {
+    font-size: 2em;
+    padding: 0.8em 0 0.6em;
+    float: left;
+    font-weight: 300;
+  }
+  .modal-subtitle{
+  	font-size: 0.78em;
+  }
+  .link-back {
+    font-size: 14px;
+    white-space: nowrap;
+    font-weight: normal;
+    display: inline-block;
+  }
+  @include media($mobile-only) {
+    margin: -1em -1em 1em;
+    padding-left: 1em;
+    .modal-title {
+      font-size: 1.2em;
+      padding: 22px 0;
+      font-weight: 300;
+      float: none;
+    }
+  }
+}
+.themodal-overlay.modal-oversized .the-modal {
+    top: 0;
+}

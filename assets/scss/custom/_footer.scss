@@ -1,0 +1,68 @@
+#footer {
+  position: absolute;
+  color: $color-dark;
+  min-width: 0;
+  padding-top: 2em;
+  border-top: 1px solid shade($color-lightness,10%);//#DDD;
+  background: $color-clear;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  font-size: 12px;
+  @include transition(all 1s);
+  @include media($mobile-only) {
+    position: static;
+    text-align: center;
+  };
+  z-index: 1;
+  .payments {
+    vertical-align: middle;
+    label {
+      vertical-align: middle;
+    }
+    .title {
+      margin-bottom: 8px;
+    }
+    @include media($tablet-and-small) {
+      text-align: left;
+    };
+    img {
+      @include filter(grayscale(100%));
+      &.custom {
+        max-width: 100%;
+        max-height: 26px;
+      }
+    }
+    .methods-payment {
+      img {
+        opacity: .75;
+        max-height: 20px;
+      }
+    }
+  }
+  .phone {
+    font-size: 1.5em;
+  }
+  .payments {
+    .cartao {
+        display: inline-block;
+        background-image: url("../Image/small-pb-cards.png");
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 16px;
+        background-position: -1px -62px;
+        margin: 8px 0;
+        @include hide-text;
+    }
+  }
+}
+
+  #ezcommerce {
+      display: block;
+      margin: 0px auto;
+      height: 32px;
+      text-indent: -9999em;
+      background: url('/Custom/Content/Widgets/easy.checkout/Image/ezcommerce.png') no-repeat center;
+      background-size: contain;
+      width: 100px;
+  }

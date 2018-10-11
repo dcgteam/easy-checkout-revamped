@@ -1,0 +1,116 @@
+#summary {
+  position: absolute;
+  width: 100%;
+  @include clearfix;
+  @include transition(top $time, bottom $time);
+  @include transform(translateX(0));
+  right: 0;
+  .safe-message {
+    color: $color-primary;
+  }
+  .column {
+    float: right;
+  }
+  .btn-huge.btn-success {
+    min-height: 70px;
+  }
+  a.btn.btn-huge {
+    background: $color-success; // Aplicação de cor forçada. Revisar. 
+  }
+  @include media($mobile-only) {
+    position: static;
+    margin-bottom: 2em;
+    .column { float: none; }
+    .container {
+      padding:0;
+    }
+  }
+  tr.discounts td {
+    border-bottom-style: dashed;
+    button {
+      white-space: nowrap;
+    }
+  }
+  tr.discount td {
+    //border: none;
+  }
+  .cupom {
+    &.cupom-hidden {
+      display: none;
+    }
+    .field {
+      margin: 0;
+    }
+  }
+  td.values {
+    width: 120px;
+    white-space: nowrap;
+    text-align: right;
+    &.minus {
+      &:before {
+        content: "-";
+      }
+    }
+  }
+  .fa-times {
+    color: $color-darkened;
+  }
+  tr {
+    &.list-products {
+      td {
+        font-weight: bold;
+      }
+    }
+  }
+  tfoot {
+    .right{
+      float: unset !important;
+    }
+    .total {
+        strong {
+          font-size: 2em;
+          line-height: 1em;
+        }
+        span {
+          font-size: 1.5em;
+        }
+    }
+    .installments {
+      strong {
+      }
+      span {
+      }
+    }
+  }
+
+  .credit-competence {
+    h4 {
+      font-weight: bold;
+      margin-top: 1em;
+    }
+  }
+}
+
+.payment #summary {
+  .go-payment {
+    display: none;
+  }
+  .safe-message {
+    color: $color-success;
+  }
+}
+
+#form-checkout-submit {
+  display: none;
+}
+.payment #form-checkout-submit {
+  display: block;
+}
+
+.loyalty-card-green{
+	color: $color-success;
+.loyalty-card-green-value {
+	font-weight: bold;
+  }
+}
+

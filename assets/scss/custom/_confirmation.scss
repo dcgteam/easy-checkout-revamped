@@ -1,0 +1,119 @@
+.confirmation {
+  h2 {
+    small {
+      white-space: nowrap;
+      @include media($mobile-only) {
+        display: block;
+        white-space: initial;
+      }
+    }
+  }
+  .header {
+    height: 100px; 
+    margin-bottom: 0;
+    
+    .logo {
+      background-size: 70%;
+      height: 60px;
+    }
+
+    .sign-out-header.go-to-home {
+      top: 100px;
+    }
+
+    .basket, .steps-bar {
+      visibility: hidden;
+      margin: 0;
+    }
+  }
+  .panel {
+    padding: 1em 2em 1em;
+    margin-bottom: 2em;
+    .btn {
+      margin-bottom: 1em;
+    }
+  }
+  h3 {
+    font-size: 1.8em;
+    padding: 0.3em 0;
+    .badge {
+      font-size: .9em;
+      border-radius: 1em;
+      background: $color-success;
+      padding: 0 0.5em;
+      line-height: 1.6em;
+    }
+  }
+  .steps-bar {
+    $size: 64px;
+    .circle {
+      .fa {
+          height: $size;
+          line-height: $size;
+          width: $size;
+          font-size: 2em;
+      }
+      .label {
+        font-size: 1em;
+      }
+    }
+    .line {
+      height: 10px;
+      top: $size/2 - 5px;
+    }
+  }
+  #scene {
+    overflow: hidden;
+  }
+  .checkout-step {
+    .basket {
+      margin: 0;
+      .basket-button,.bottom-close {
+        display: none;
+      }
+      .address-delivery .wrapper > div:first-child, table thead th {
+        background: $color-lightness;
+      }
+      .btn {
+        opacity: 0;
+      }
+      .basket-data {
+        background: transparent;
+        display: block;
+        margin: 0;
+        padding: 0;
+        border: none;
+        a {
+          display: none;
+        }
+      }
+      .sign-out,.link-back {
+        display: none;
+      }
+    }
+  }
+  h2 {
+    font-size: 3em;
+    margin: 1.5em 0;
+    color: $color-success;  
+    small {
+      font-size: 0.7em;
+    }
+  }
+  .content {
+    width: 100%;
+    float: none;
+  }
+  #summary {
+    @include transform(translateX(500%));
+    position: absolute;
+    display: none;
+  }
+
+  .deposit-data-wrapper {
+      border-left: 2px solid $color-light;
+      padding-left: 15px;
+      margin-top: 10px;
+
+  }
+}

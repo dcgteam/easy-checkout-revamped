@@ -1,0 +1,209 @@
+#signup-form {
+  .signin {
+    position: absolute;
+    z-index: 220;
+    background: #FFF;
+    padding: 2em;
+    top: -60px;
+    width: 100%;
+    left: 0px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    h3 {
+      font-size: 20px;
+      margin-right: 36px;
+    }
+    .close {
+      border-radius: 0;
+      top:0;
+      right:0;
+    }
+    .social-signin {
+      width: 100%;
+      margin-top: 1em;
+      .line {
+        height: 1px;
+        background: #DDD;
+        margin-top: -1.25em;
+        margin-bottom: 1.6em;
+        display: block;
+      }
+    }
+    .wrapper-representative {
+      display: none;
+    }
+  }
+  @include media($mobile-only) {
+    .signin {
+      width: 100%;
+      left: 0px;
+      top: -78px;
+    }
+  }
+  &.email-exist {
+    @include overlay;
+  }
+}
+
+
+%representative-photo {
+  width: 36px;
+  height: 36px;
+  display: block;
+  border-radius: 35px;
+  background-position: 50% 50%;
+  background-size: cover;  
+  float:left;
+}
+.modal-choose-representative {
+
+  .representative-list {
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+
+    .column {
+      
+      padding-right: 7.5px;
+      padding-left: 7.5px;
+      @include media( $tablet ) {
+        @include span-columns(4 of 12);
+        @include omega(3n);
+      }
+      
+      .box {
+        border: thin solid $color-light;
+        border-radius: $border-radius;
+        cursor: pointer;
+        padding: 8px;
+        border: 1px solid $color-light;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+
+        .photo {
+            @extend %representative-photo
+        }
+
+        .info {
+          float: left;
+          width: 80%;
+          padding-left: 9px;
+
+          span {
+            display: block;            
+            text-overflow: ellipsis;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+
+            &.name {
+              font-weight: bold;
+              font-size: 13px;
+            }
+            &.email {
+              font-size: 11px;
+            }
+          }
+        }
+      }
+
+    }
+
+    @include media($mobile-only) {
+      .column {
+        @include media( $mobile ) {
+          @include span-columns(12 of 12);
+          @include omega(1n);
+        }
+      }
+    }
+
+  }
+}
+
+.box-representative {
+
+  .btn-outline {
+    //margin-bottom: 35px;
+
+    .icon {
+      color: $color-dark;
+      border-left: thin solid $color-light;
+      padding-left: 10px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      margin-top: 4px;
+      position: absolute;
+      right: 14px;
+
+      i {
+        font-size: 15pt;
+      }
+    }
+  }
+  .label {
+    font-weight: normal;
+  }
+  .photo {
+    @extend %representative-photo
+  }
+  
+  .info {
+    float: left;
+    width: 80%;
+    padding-left: 9px;
+
+    span {
+      text-align: left;
+      color: initial;
+      display: block;            
+      text-overflow: ellipsis;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+
+      &.name {
+        font-weight: bold;
+        font-size: 13px;
+      }
+      &.email {
+        font-size: 11px;
+      }
+    }
+  }
+
+  .list {
+    border: thin solid $color-light;
+    border-radius: 0 0 $border-radius $border-radius;
+    border: 1px solid $color-light;
+    position: relative;
+    display: inline-block;
+    width: 67%;
+    background: #fff;
+    z-index: 5;
+    max-height: 90px;
+    overflow-y: auto;
+    position: absolute;
+    margin-top: -2px;
+    
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+        display: block;            
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 8px;
+        cursor: pointer;
+        margin-bottom: 0;
+        &:hover{
+          background: #f1f1f1;
+        }
+      }
+    }
+  }
+
+}

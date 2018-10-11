@@ -1,0 +1,115 @@
+.social-signin,
+.social-signin-account {
+  text-align: center;
+  button {
+    margin-right: 0.5em;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .facebook-account-mobile,
+  .facebook-account,
+  .twitter-account-mobile,
+  .twitter-account,
+  .stelo-account-mobile,
+  .stelo-account {
+    display: none;
+    text-align: left;
+    white-space: nowrap;
+    position: relative;
+    &:before {
+      @extend .fa;
+      height: 18px;
+      width: 18px;
+      position: absolute;
+      top: 25px;
+      left: 31px;
+      font-size: 8px;
+      line-height: 14px;
+      text-align: center;
+      color: $color-empty;
+      border-radius: 100%;
+      border: 2px solid $color-empty;
+    }
+    img {
+      height: 42px;
+      width: 42px;
+      float: left;
+      margin: 0 8px 8px 0;
+      border-radius: 100%;
+    }
+  }
+
+  .facebook-account-mobile,
+  .facebook-account {
+    @extend .fa-facebook;
+    &:before {
+      background: #3b5998;
+    }
+  }
+
+  .twitter-account-mobile,
+  .twitter-account {
+    @extend .fa-twitter;
+    &:before {
+      background: #73BAF0;
+    }
+  }
+  .facebook-account,
+  .twitter-account,
+  .stelo-account {
+    padding-top: 8px;
+    img {
+      margin-top: -6px;
+    }
+  }
+  .facebook-account-mobile,
+  .twitter-account-mobile,
+  .stelo-account-mobile {
+    img {
+      float: none;
+      vertical-align: middle;
+    }
+  }
+  &.facebook-ok,
+  &.twitter-ok,
+  &.stelo-ok {
+    .title,.buttons {
+      display: none;
+    }
+    .facebook-account,
+    .twitter-account,
+    .stelo-account {
+      display: block;
+      margin-top: 6px;
+      @include media($mobile-only) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .stelo-account {
+      img {
+        display: none;
+      }
+    }
+  }
+  .line {
+    height: 1px;
+    background: $color-light;
+    margin-top: -1.25em;
+    margin-bottom: 1.6em;
+  }
+  .title {
+    background: $color-clear;
+      padding: 0 1em;
+      display: inline-block;
+      margin-bottom: 0.6em;
+  }
+}
+.social-signin {
+  margin-top: 20px;
+  @include media($tablet-only) {
+    margin-top: 6px;
+  }
+}

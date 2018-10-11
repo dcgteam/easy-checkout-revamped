@@ -1,0 +1,133 @@
+.tab-nav {
+  @include clearfix;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    overflow: hidden;
+    background: $color-clear;
+    &:active {
+      // @extend .tab-active;
+    }
+    &:hover {
+      // @include transition-duration($time);
+      @extend .tab-hover;
+    }
+    a {
+      // font-size: 0.6rem;
+      display: block;
+      outline: none;
+      line-height: 1em;
+      padding: 1.5em;
+      // text-align: center;
+      // color: $color-text;
+      // text-transform: uppercase;
+      // font-weight: 700;
+    }
+  }
+  .tab-hover {
+    background: $color-lightness;
+    a {
+      text-decoration: none;
+    }
+  }
+  .tab-active {
+    border: 1px solid $color-light;
+    background: $color-clear;
+    &.tab-hover {
+      background: $color-clear;
+    }
+    a {
+      color: $color-text;
+      font-weight: 700;
+      cursor: default;
+      border: none;
+    }
+  }
+}
+
+.tab-content {
+  background: $color-clear;
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+.tab-morph {
+  @include clearfix;
+  @include media($mobile-only) {
+    .tab-nav {
+      li {
+        display: none;
+        float: none;
+        border-radius: 4px;
+        &.tab-active {
+          display: block;
+        }
+      }
+      margin-bottom: 1em;
+    }
+    .tab-content {
+      // display: none;
+    }
+  }
+  @include media($tablet-only) {
+    .tab-nav {
+      display: table;
+      // border-bottom: 1px solid $color-light;
+      // width: 100%;
+      margin-bottom: -1px;
+      position: relative;
+      z-index: 1;
+      li {
+        font-size: 0.8em;
+        text-align: center;
+        display: table-cell;
+        float: none;
+        border-radius: 4px 4px 0 0;
+        border-bottom: 1px solid $color-light;
+        background: $color-empty;
+        a {
+          padding: 1em 0.8em;
+        }
+      }
+      .tab-hover {
+        border-bottom-color: $color-light;
+      }
+      .tab-active {
+        border-bottom: none;
+      }
+    }
+    .tab-content {
+      border-top: 1px solid $color-light;
+      padding-top: 1em;
+    }
+  }
+  @include media($desktop) {
+    .tab-nav {
+      @include span-columns(4 of 12);
+      padding-bottom: 3em;
+      border-right: 1px solid $color-light;
+      li {
+        display: block;
+        float: none;
+        border-right: 1px solid $color-light;
+        border-radius: 4px 0 0 4px;
+        margin-right: -1px;
+      }
+      .tab-active {
+        border-right: none;
+      }
+    }
+    .tab-content {
+      border-top: 1px solid $color-light;
+      padding-left: 2em;
+      padding-top: 2em;
+      &.active {
+      @include span-columns(8 of 12);
+        
+      }
+    }
+  }
+}

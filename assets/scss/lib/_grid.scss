@@ -1,0 +1,132 @@
+$mobile: new-breakpoint(min-width 0);
+$mobile-only: new-breakpoint(min-width 0 max-width 640px);
+$tablet: new-breakpoint(min-width 641px);
+$tablet-only: new-breakpoint(min-width 641px max-width 800px);
+$tablet-max: new-breakpoint(max-width 800px);
+$tablet-and-small: new-breakpoint(min-width 641px max-width 1024px);
+$small: new-breakpoint(min-width 801px);
+$small-only: new-breakpoint(min-width 801px max-width 1024px);
+$small-max: new-breakpoint(max-width 1025px);
+$desktop: new-breakpoint(min-width 1025px);
+
+@mixin grid($name){
+  .column {
+    $col: $grid-columns;
+    @while $col > 0 {
+      &.#{$name}-#{$col} {
+        @include span-columns($col);
+      }
+      &.#{$name}-shift-#{$col} {
+        @include shift($col);
+      }
+      $col: $col - 1;
+    }
+  }
+  .row {
+    $col: $grid-columns;
+    @while $col > 1 {
+      &.#{$name}-#{$col} {
+        .column {
+          @include omega(#{$col}n);
+          &:nth-child(#{$col+1}n) {
+            clear: left;
+          }
+        }
+      }
+      $col: $col - 1;
+    }
+  }
+  .hide-in-#{$name} {
+    display: none;
+  }
+  .view-in-#{$name} {
+    display: block;
+  }
+  .#{$name}-right {
+    text-align: right;
+  }
+  .#{$name}-left {
+    text-align: left;
+  }
+  .#{$name}-center {
+    text-align: center;
+  }
+}
+
+@mixin grid-media($name,$device){
+  @include media($device) {
+    @include grid($name);
+  }
+}
+
+@include grid-media('mobile',$mobile);
+@include grid-media('tablet',$tablet);
+@include grid-media('small',$small);
+@include grid-media('desktop',$desktop);
+
+
+$gutter: 30px;
+
+.base {
+  margin-bottom: $gutter/2;
+}
+
+.container {
+  @include outer-container;
+}
+
+.row {
+  @include row;
+  position: relative;
+  $neg: -$gutter/2;
+  @include margin(null $neg null $neg);
+  @include media($tablet) {
+    &.bottom,&.table {
+      display: table;
+      width: 100%;
+      .column {
+        display: table-cell;
+        float: none;
+        vertical-align: bottom;
+        padding-bottom: $gutter/2;
+      }
+    }
+    &.table {
+      .column {
+        padding-bottom: 0;
+      }
+    }
+    &.middle {
+      .column {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+.column {
+  $pad: $gutter/2;
+  @include padding(null $pad null $pad);
+  position: relative;
+  @extend .base;
+  &.nested {
+    margin-bottom: 0;
+  }
+  &.pull-right {
+    float: right;
+  }
+}
+.hide-for-small {
+  @include media($mobile-only) {
+    display: none!important;
+  }
+}
+.hide-for-tablet {
+  @include media($tablet-and-small) {
+    display: none!important;
+  }
+}
+.show-for-desktop {
+  @include media($desktop) {
+    display: block!important;
+  }
+}

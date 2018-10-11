@@ -1,0 +1,163 @@
+.wd-easy-checkout{
+
+	&.wd-easy-checkout-mode-b2b{
+
+		.customer-relation-address{
+			.show-all{
+				margin-left: 10px;
+			}
+		}
+
+		.basket-button{
+			// .title{
+			// 	margin-top: 10px;
+			// }
+
+			.sub-title{
+				display: none;
+			}
+		}
+
+		#scene{
+			&.payment.methods{
+				.basket-button{
+					.title{
+						margin-top: 10px;
+					}
+				}
+
+				&.basket-data-show{
+
+					.basket-button{
+						.title{
+							margin-top: 0;
+						}
+					}
+
+				}
+			}
+
+		}
+
+
+
+		.customer-relation-addresses{
+			margin-bottom: 10px;
+		}
+
+		.customer-relation-basket{
+			.customer-name{
+				font-weight: bold;
+
+				a{
+					font-size: 10pt;
+				}
+
+			}
+
+			td.quant{
+				text-align: center;
+			}
+
+			.product.variation-line{
+				.product-name{
+					display: none;
+				}
+			}
+
+			.product.has-variation,
+			.product.is-bundle{
+				.photo{
+					vertical-align: top;
+				}
+			}
+
+			.nested-line{
+				.product-name{
+					font-size: 12px;
+				}
+				.payment-term{
+					span{
+						display: none;
+					}
+				}
+			}
+		}
+
+		.basket-data-container{
+			hr{
+				margin: 8px 0;
+
+				&:last-child{
+					display: none;
+				}
+			}
+		}
+
+		@include media( $mobile-only ) {
+			.basket-data table thead th.name{
+				width: 100%;
+
+			}
+
+		}
+
+		.taxation-amount-popover{
+			small{
+				right: -144px;
+
+				&::after{
+					left: 51px;
+				}
+			}
+		}
+
+	}
+
+}
+
+.split-group-items-modal {
+	.the-modal{
+		.basket-data{
+			clear: both;
+    		margin-top: 10px;
+
+			table {
+				border-collapse: initial;
+
+				thead th.name{
+					//text-indent: 0px;
+
+					@include media( $mobile-only ) {
+						width: 100%;
+					}
+
+				}
+
+				.payment-term{
+				//.photo{
+					display: none;
+				}
+
+				.variation-line{
+					.product-name{
+						display: none;
+					}
+				}
+				th{
+					i{
+						display: none;
+					}
+				}
+
+				.name{
+
+					.customer-relation-name{
+						display: inline-block;
+					}
+
+				}
+			}
+		}
+	}
+}

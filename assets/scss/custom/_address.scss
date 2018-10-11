@@ -1,0 +1,697 @@
+.show-all-addresses {
+	display: none;
+
+	@include media($tablet-and-small) {
+		display: inline-block;
+	}
+}
+
+.address-list {
+	h3 {
+		margin-bottom: 0.3em;
+	}
+
+	table tr:first-child td {
+		border-top: 1px solid $color-light;
+	}
+
+	table tr:last-child td {
+		border: none;
+	}
+
+	table td:last-child {
+		min-width: 124px;
+	}
+}
+
+.main-address,
+.billing-address {
+	margin-bottom: 1em;
+
+	&.customer-relation-address{
+		margin-bottom: 0;
+
+		.panel{
+			margin-bottom: 0;
+
+			&.additional{
+				border-top: none;
+			}
+		}
+	}
+
+	h4 {
+		margin-bottom: 0;
+		font-weight: bold;
+		line-height: 1.4em;
+		padding: 5px 0;
+	}
+
+	.panel {
+		border-left: 3px solid $color-success;
+	}
+
+	.header {
+		background: transparent;
+		border: none;
+		margin-bottom: 0;
+		float: left;
+		padding-bottom: 0.5em;
+		max-width: 79%;
+
+		@include media(max-width 480px) {
+			float: none;
+		}
+
+		.customer-document {
+			margin-bottom: 15px;
+			display: block;
+			font-style: normal;
+		}
+	}
+
+	.edit {
+		float: right;
+		padding: 7px 0;
+
+		@include media(max-width 480px) {
+			float: none;
+			display: inline-block;
+		}
+	}
+
+	address {
+		clear: both;
+		padding-top: 0.5em;
+
+		.pre {
+			@include media($mobile-only) {
+				white-space: normal;
+			}
+		}
+	}
+
+	.btn-outline {
+		background: transparent;
+	}
+
+	.scroll-delivery {
+		display: none;
+	}
+
+	@include media($mobile-only) {
+		.panel {
+			position: relative;
+			//padding-right: 48px;
+
+		}
+
+		.scroll-delivery {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin-left: auto;
+			font-size: 2em;
+			width: 48px;
+
+			&.disable {
+				color: $color-light;
+				cursor: default;
+			}
+
+			i {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				margin: auto 4px;
+				height: 1em;
+				left: 0;
+			}
+		}
+	}
+}
+
+.delivery-list {
+	background: $color-clear;
+	position: relative;
+	border-left: 1px solid $color-light;
+	border-right: 1px solid $color-light;
+
+	strong.has-discount {
+		font-weight: normal;
+
+		.price {
+			font-weight: bold;
+		}
+	}
+
+	.keep {
+		font-size: 2em;
+		padding-right: 1em;
+		padding-left: 1em;
+
+		a {
+			text-decoration: none;
+		}
+
+		.tiny-loading {
+			height: 24px;
+			width: 24px;
+		}
+
+		&.disable {
+			a {
+				color: $color-light;
+				cursor: default;
+			}
+		}
+	}
+
+	.lock {
+		display: none;
+		position: absolute;
+		border-radius: 0;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+		background: rgba($color-lightness, 0.7);
+		// border: 1px dashed shade($color-light,5%);
+
+	}
+
+	.btn-small {
+		white-space: nowrap;
+	}
+
+	&.tiny {
+		table {
+			td {
+				padding: 4px 6px;
+				padding-top: 6px;
+			}
+
+			.active td {
+				padding-top: 4px;
+			}
+		}
+	}
+
+	table {
+		border-collapse: separate;
+
+		&.base {
+			margin-bottom: 0;
+		}
+
+		tbody {}
+
+		tr {
+			@include transition(all $time);
+			// opacity: 0;
+
+			a[href*="#payment"] {
+				display: none;
+			}
+
+			&:not(.active):hover {
+				td {
+					background: $color-lightness;
+					@include linear-gradient(tint($color-lightness, 70%), tint($color-lightness, 20%));
+					// border-top: $color-light 1px solid;
+					background: shade($color-lightness, 2.5%); // Feito para tirar gradiente.
+
+				}
+			}
+
+			.schedule-tax {
+				display: none;
+			}
+
+			&.active {
+				.schedule {
+					display: block;
+					margin-bottom: 0.5em;
+					max-width: 180px;
+				}
+
+				.schedule-tax {
+					display: inline;
+				}
+
+				td {
+					background: $color-clear;
+					border-top: $color-light 1px solid;
+					padding-top: 14px;
+					border-bottom: none;
+					cursor: default;
+
+					&:first-child {
+						border-left-color: $color-success;
+					}
+
+					a[href*="#payment"] {
+						display: block;
+					}
+
+					&.icon {
+						@include filter(grayscale(0));
+					}
+				}
+			}
+
+			&:last-child {
+				td {
+					border-bottom: 1px solid $color-light;
+				}
+			}
+		}
+
+		td {
+			position: relative;
+			font-size: 14px;
+			padding: 14px 6px;
+			padding-top: 16px;
+			cursor: pointer;
+			border-top: 1px solid $color-light;
+			border-bottom: none;
+
+			&:first-child {
+				border-left: 3px solid transparent;
+			}
+
+			&.icon i {
+				font-size: 2em;
+				margin: 4px;
+			}
+
+			input[type=radio] {
+				margin-left: 12px;
+			}
+
+			&:last-child .btn {
+				margin-right: 16px;
+			}
+
+			.discount {
+				display: inline-block;
+				margin: 6px 0 2px;
+			}
+
+			&.icon {
+				@include filter(grayscale(100%));
+				min-width: 70px;
+				text-align: center;
+
+				img {
+					max-width: 100%;
+				}
+			}
+		}
+
+		.info {
+			width: 70%;
+		}
+	}
+
+	h4,p {
+		// line-height: 1.2em;
+
+	}
+
+	h4 {
+		font-weight: 700;
+	}
+
+	.schedule {
+		display: none;
+		margin-top: 0.5em;
+
+		.field {
+			margin-bottom: 0.5em;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.upgrade-available {
+		td {
+			border-bottom: none;
+		}
+
+		.label {
+			position: absolute;
+			background: tint($color-warning, 75%);
+			color: shade($color-warning, 35%);
+			border: 1px dashed $color-warning;
+			font-size: 0.75em;
+			line-height: normal;
+			padding: 0.5em;
+			margin: 0.5em;
+			top: 0;
+			right: 0;
+			white-space: nowrap;
+			border-radius: 4px;
+		}
+	}
+
+	@include media($mobile-only) {
+		tr {
+			td:first-child {
+				display: none;
+			}
+		}
+	}
+}
+
+.use-default-name {
+	label {
+		margin-top: 2.3em;
+		display: block;
+	}
+}
+
+#form-address {
+	@include media($mobile-only) {
+		.pull-right {
+			float: none;
+			display: block;
+		}
+	}
+
+	.address {
+		float: left;
+		white-space: pre-wrap;
+		display: block;
+	}
+
+	.empty {
+		color: $color-darkened;
+	}
+}
+
+// addressess
+.modal-address-list {
+	margin-left: -7.5px;
+	margin-right: -7.5px;
+
+	.column {
+		padding-right: 7.5px;
+		padding-left: 7.5px;
+
+		@include media($tablet) {
+			@include span-columns(4 of 12);
+			@include omega(3n);
+		}
+
+		.box {
+			padding: 1em;
+			border: 1px solid $color-light;
+			height: 180px;
+			position: relative;
+
+			.address-header {
+				position: relative;
+				margin-right: 60px;
+
+				.edit {
+					position: absolute;
+					top: 0;
+					right: -60px;
+				}
+
+				.title {
+					font-weight: bold;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					vertical-align: middle;
+				}
+			}
+
+			.btn {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				margin: 5%;
+				width: 90%;
+			}
+
+			.pre {
+				font-size: 12px;
+				margin-top: 4px;
+				padding-left: 16px;
+			}
+		}
+
+		.bigblock {
+			display: block;
+			padding: 62px 1em;
+			height: 180px;
+			font-size: 24px;
+			text-align: center;
+			line-height: 1.2;
+
+			@include media($mobile-only) {
+				padding: 0.5em 1em;
+				height: auto;
+			}
+		}
+	}
+}
+
+// customer relations
+.modal-customer-relation-list {
+	margin-left: -7.5px;
+	margin-right: -7.5px;
+
+	.column {
+		padding-right: 7.5px;
+		padding-left: 7.5px;
+
+		@include media($tablet) {
+			@include span-columns(4 of 12);
+			@include omega(3n);
+		}
+
+		.box {
+			padding: 1em;
+			border: 1px solid $color-light;
+			height: 245px;
+			/*height: 180px;*/
+			position: relative;
+
+			.address-header {
+				position: relative;
+				margin-right: 0px;
+
+				.edit {
+					position: absolute;
+					top: 0;
+					right: -60px;
+				}
+
+				.title {
+					font-weight: bold;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					vertical-align: middle;
+				}
+
+				.cnpj {
+					margin: 10px 0;
+				}
+			}
+
+			.pre {
+				padding-left: 0;
+				font-size: 12px;
+
+				&.pin {
+					margin-top: 4px;
+					white-space: normal;
+					padding-left: 16px;
+				}
+			}
+
+			.btn {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				margin: 5%;
+				width: 90%;
+			}
+
+			.badge {
+				width: 100%;
+				/*margin-top: 14px;*/
+				margin-top: 10%;
+				opacity: 0.6;
+
+				@include media($mobile) {
+					margin-top: 6%;
+				}
+
+				@include media($desktop) {
+					margin-top: 10%;
+				}
+			}
+		}
+
+		.bigblock {
+			display: block;
+			padding: 62px 1em;
+			height: 180px;
+			font-size: 24px;
+			text-align: center;
+			line-height: 1.2;
+
+			@include media($mobile-only) {
+				padding: 0.5em 1em;
+				height: auto;
+			}
+		}
+	}
+}
+
+.delivery-list.address-empty {
+	opacity: 0.7;
+
+	.lock {
+		background: rgba(white, 0.7);
+		display: block;
+	}
+
+	.btn,button,.method {
+		display: none !important;
+	}
+
+	.pseudo {
+		background-color: $color-darkened;
+		height: 0.5em;
+	}
+
+	tr:nth-child(odd) {
+		.pseudo {
+			width: 55%;
+		}
+	}
+
+	tr:nth-child(even) {
+		.pseudo {
+			width: 65%;
+		}
+	}
+}
+
+.ui-datepicker {
+	background: $color-clear;
+	margin: 2px 0 0 -10px;
+	padding: 0;
+	z-index: 100;
+	width: auto;
+	border-color: $color-light;
+	border-radius: 4px;
+	overflow: hidden;
+	box-shadow: 1px 3px 4px rgba(black, 0.1);
+
+	table {
+		td,th {
+			vertical-align: middle;
+			padding: 0;
+			border: none;
+		}
+
+		thead {
+			background: $color-lightness;
+
+			th {
+				color: $color-dark;
+				font-weight: normal;
+				font-size: 10px;
+			}
+		}
+
+		tbody {
+			.ui-state-default {
+				line-height: 28px;
+				margin: 4px;
+				width: 28px;
+				padding: 0;
+				border-radius: 4px;
+			}
+
+			.ui-state-active {
+				border: 1px solid $color-primary;
+				margin: 3px;
+				line-height: 26px;
+			}
+
+			.ui-state-disabled {
+				font-size: 10px;
+				color: $color-light;
+
+				span {
+					line-height: 18px;
+				}
+			}
+		}
+	}
+
+	.ui-state-default {
+		color: $color-primary;
+		text-align: center;
+		background: none;
+	}
+
+	.ui-state-hover {
+		background: $color-primary;
+		color: $color-empty;
+	}
+
+	.ui-datepicker-header {
+		background: $color-primary;
+		border: none;
+	}
+
+	.ui-datepicker-prev, .ui-datepicker-next {
+		height: 30px;
+		width: 30px;
+	}
+
+	.ui-state-default {
+		border: none;
+	}
+}
+
+.delivery-separator {
+	margin-bottom:0.5em;
+	margin-top:1em;
+}
+
+.point-of-sale-selection{
+	margin-top: 10px;
+	margin-bottom: 8px;
+	a{
+		color: #fff;
+	}
+}
+.modal-choose-point-of-sale{
+	#pointofsale-map {
+	 	width: 100%;
+	 	height: 500px;
+	 	background: rgba(204, 204, 204, 0.78);
+	}
+	.selected-address-data{
+		small{
+			margin-top: 8px;
+    		display: block;
+		}
+	}
+}

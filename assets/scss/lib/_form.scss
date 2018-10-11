@@ -1,0 +1,382 @@
+// ---- inputs ----
+$border-radius: 3px;
+$shadow-color: rgba($color-primary,0.2);
+$shadow-size: 4px;
+$input-height: 38px;
+
+%input {
+  border-radius: 0;
+  font-family: inherit;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $color-light;
+  border-radius: $border-radius;
+  color: $color-text;
+  display: block;
+  margin: 0;
+  padding: 0 0.75em;
+  width: 100%;
+  // line-height: $input-height;
+  height: $input-height;
+  &[disabled] {
+    background-color: $color-lightness;
+    color: $color-dark;
+  }
+}
+
+select {
+  line-height: $input-height;
+}
+
+#{$all-text-inputs}, select {
+  @extend %input;
+  &:focus {
+      box-shadow: none;
+      outline: none;
+      border-color: $color-primary;
+  }
+}
+
+$search-height: 48px;
+.input-search {
+  @include clearfix;
+  border: 3px solid #eee;
+  margin: -3px 0;
+  border-radius: 2px;
+  position: relative;
+  .btn {
+    margin: 0;
+    text-transform: uppercase;
+    height: $search-height;
+  }
+  #{$all-text-inputs} {
+      height: $search-height;
+      line-height: $search-height;
+      border-right: none;
+  }
+}
+.inline-input {
+  padding:0; 
+  display: table;
+  width: 100%;
+  position: relative;
+  border-collapse: separate;
+  .prefix,.suffix,input,select,.cell,.inner,.validation {
+    display: table-cell;
+    box-sizing: border-box;
+    color: $color-dark;
+    border-radius: 0;
+  }
+  >:first-child {
+    @include border-left-radius($border-radius);
+    &.validation {
+      &>input {
+        // border-radius: $border-radius;
+        @include border-left-radius($border-radius);
+      }
+    }
+  }
+  >:last-child {
+    @include border-right-radius($border-radius);
+    &.validation {
+      &>input {
+        @include border-right-radius($border-radius);
+      }
+    }
+  }
+  &.with-append {
+    .validation>input {
+      border-radius: $border-radius;
+    }
+  }
+  .prefix {
+    border-right: 0;
+    // margin-right: -1px;
+  }
+  .suffix {
+    // margin-left: -1px;
+    border-left: 0;
+    position: relative;
+    &.link {
+      color: $color-text-link;
+      cursor: pointer;
+    }
+    &.helper {
+      @extend .link;
+      &.active {
+        .message {
+          visibility: visible;
+          opacity: 1;
+          bottom: 80%;
+        }
+      }
+      @extend .fa-question;
+      &:before {
+        @extend .fa;
+      }
+      .message {
+        display: block;
+        visibility: hidden;
+        @include transition(opacity $time $fx $time/2, bottom $time $fx);
+        position: absolute;
+        right: -5px;
+        background: shade($color-lightness,5%);
+        color: $color-dark;
+        z-index: 150;
+        bottom: 0%;
+        border-radius: 3px;
+        margin-left: 1.6em;
+        opacity: 0;
+        &:before {
+          content: "";
+          position: absolute;
+          left: 100%;
+          bottom: -4px;
+          margin-left: -25px;
+          @include triangle(8px, shade($color-lightness,5%), down);
+        }
+      }
+    }
+  }
+  .inner {
+    border-left: 0;
+    border-right: 0;
+  }
+  .prefix,.suffix,.inner {
+    @extend %input;
+    height: $input-height - 2;
+    text-align: center;
+    width: 1em;
+    white-space: nowrap;
+    background: $color-lightness;
+    padding: 0 12px;
+    vertical-align: middle;
+  }
+  .append {
+    @extend .suffix;
+    background: none;
+    border: none;
+    padding: 0;
+    // button {
+    //   margin-left: -1px;
+    // }
+  }
+  button,.btn {
+    @include border-left-radius(0);
+    border-left:0;
+    height: $input-height;
+  }
+}
+
+.column>.field:last-child {
+  margin-bottom: 0;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  vertical-align: middle;
+  float: left;
+  height: 1em;
+  width: 1em;
+  margin-right: 0.5em;
+}
+input[type='radio'] {
+  margin-top: -1px;
+}
+input[type="checkbox"] {
+  margin-top: 2px; 
+}
+
+.field {
+  margin-bottom: 1em;
+  font-size: $global-font-size;
+  &:last-child {
+    margin-bottom: 0em;
+  }
+  &.small {
+    #{$all-text-inputs}, select, .prefix, .suffix, .append, .inner {
+      height: 30px;
+      font-size: 12px;
+    }
+  }
+  &.checkbox,.checkbox,.validation.checkbox {
+    label {
+      font-weight: normal;
+      line-height: 0.9em;
+      vertical-align: middle;
+      padding: 0.5em 0.5em 0 0;
+      display: inline-block;
+    }
+    .validation {
+      display: inline-block;
+      padding-right: 28px;
+    }
+  }
+  label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    small {
+      font-weight: normal;
+      white-space: nowrap;
+    }
+  }
+  .tool {
+    float: right;
+  }
+  .validation {
+    position: relative;
+    .message {
+      display: none;
+      @include transition(all $time ease-in-out);
+      z-index: 1000;
+      position: absolute;
+      right: 0;
+      top: 80%;
+      border-radius: 3px;
+      margin-left: 1.6em;
+      // box-shadow: 0 1px 1px $color-gray;
+      opacity: 0;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 100%;
+        top: -4px;
+        margin-left: -18px;
+        @include triangle(8px, tint($color-error,90%), up);
+      }
+    }
+    &:before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: center;
+        bottom: 0;
+        margin: auto;
+        height: 16px;
+        margin-right: 1px;
+        height: 28px;
+        padding: 0.5em 0.5em 0.5em 0;
+        // @include linear-gradient(-90deg, rgba($color-empty,0%), $color-empty);
+    }
+    &.onfocus {
+      .message {
+        opacity: 1;
+        top: 95%;
+      }
+    }
+    &.checkbox {
+      display: inline-block;
+      padding-right: 28px;
+    }
+    &.select {
+      &:before {
+        padding-right: 18px;
+      }
+      .message {
+        margin-right: 12px;
+      }
+    }
+    &.success {
+      @extend .fa-check;
+      &:before {
+        display: block;
+        color: $color-success;
+        @extend .fa;
+      }
+      #{$all-text-inputs}, select, .prefix,.suffix {
+        border-color: tint($color-success,70%);
+      }
+      .prefix,.suffix {
+        color: shade($color-success,20%);
+      }
+      .suffix {
+        background: tint($color-success,90%);
+      }
+      .suffix {
+        border-left: none;
+      }
+    }
+    &.error {
+      @extend .fa-exclamation-circle;
+      &:before {
+        display: block;
+        color: $color-error;
+        @extend .fa;
+      }
+      #{$all-text-inputs}, select, .prefix,.suffix {
+        border-color: tint($color-error,70%);
+      }
+      .prefix,.suffix {
+        color: shade($color-error,20%);
+      }
+      .suffix {
+        background: tint($color-error,90%);
+      }
+      .message {
+        background: tint($color-error,90%);
+        color: $color-error;
+        //display: block;
+      }
+      &.showerror {
+        .message {
+          display: block;
+          opacity: 1;
+        }
+      }
+    }
+    &.error,&.success {
+      input {
+        padding-right: 21px;
+      }
+    }
+    &.loading {
+      &:before {
+        content: '';
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        // background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJibGFjayI+CiAgPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMikiIGQ9Ik0wIDEyIFYyMCBINCBWMTJ6Ij4gCiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJkIiB2YWx1ZXM9Ik0wIDEyIFYyMCBINCBWMTJ6OyBNMCA0IFYyOCBINCBWNHo7IE0wIDEyIFYyMCBINCBWMTJ6OyBNMCAxMiBWMjAgSDQgVjEyeiIgZHVyPSIxLjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgYmVnaW49IjAiIGtleXRpbWVzPSIwOy4yOy41OzEiIGtleVNwbGluZXM9IjAuMiAwLjIgMC40IDAuODswLjIgMC42IDAuNCAwLjg7MC4yIDAuOCAwLjQgMC44IiBjYWxjTW9kZT0ic3BsaW5lIiAgLz4KICA8L3BhdGg+CiAgPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOCkiIGQ9Ik0wIDEyIFYyMCBINCBWMTJ6Ij4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImQiIHZhbHVlcz0iTTAgMTIgVjIwIEg0IFYxMno7IE0wIDQgVjI4IEg0IFY0ejsgTTAgMTIgVjIwIEg0IFYxMno7IE0wIDEyIFYyMCBINCBWMTJ6IiBkdXI9IjEuMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC4yIiBrZXl0aW1lcz0iMDsuMjsuNTsxIiBrZXlTcGxpbmVzPSIwLjIgMC4yIDAuNCAwLjg7MC4yIDAuNiAwLjQgMC44OzAuMiAwLjggMC40IDAuOCIgY2FsY01vZGU9InNwbGluZSIgIC8+CiAgPC9wYXRoPgogIDxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE0KSIgZD0iTTAgMTIgVjIwIEg0IFYxMnoiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iZCIgdmFsdWVzPSJNMCAxMiBWMjAgSDQgVjEyejsgTTAgNCBWMjggSDQgVjR6OyBNMCAxMiBWMjAgSDQgVjEyejsgTTAgMTIgVjIwIEg0IFYxMnoiIGR1cj0iMS4ycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwLjQiIGtleXRpbWVzPSIwOy4yOy41OzEiIGtleVNwbGluZXM9IjAuMiAwLjIgMC40IDAuODswLjIgMC42IDAuNCAwLjg7MC4yIDAuOCAwLjQgMC44IiBjYWxjTW9kZT0ic3BsaW5lIiAvPgogIDwvcGF0aD4KICA8cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMCkiIGQ9Ik0wIDEyIFYyMCBINCBWMTJ6Ij4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9ImQiIHZhbHVlcz0iTTAgMTIgVjIwIEg0IFYxMno7IE0wIDQgVjI4IEg0IFY0ejsgTTAgMTIgVjIwIEg0IFYxMno7IE0wIDEyIFYyMCBINCBWMTJ6IiBkdXI9IjEuMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC42IiBrZXl0aW1lcz0iMDsuMjsuNTsxIiBrZXlTcGxpbmVzPSIwLjIgMC4yIDAuNCAwLjg7MC4yIDAuNiAwLjQgMC44OzAuMiAwLjggMC40IDAuOCIgY2FsY01vZGU9InNwbGluZSIgLz4KICA8L3BhdGg+CiAgPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjYpIiBkPSJNMCAxMiBWMjAgSDQgVjEyeiI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJkIiB2YWx1ZXM9Ik0wIDEyIFYyMCBINCBWMTJ6OyBNMCA0IFYyOCBINCBWNHo7IE0wIDEyIFYyMCBINCBWMTJ6OyBNMCAxMiBWMjAgSDQgVjEyeiIgZHVyPSIxLjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgYmVnaW49IjAuOCIga2V5dGltZXM9IjA7LjI7LjU7MSIga2V5U3BsaW5lcz0iMC4yIDAuMiAwLjQgMC44OzAuMiAwLjYgMC40IDAuODswLjIgMC44IDAuNCAwLjgiIGNhbGNNb2RlPSJzcGxpbmUiIC8+CiAgPC9wYXRoPgo8L3N2Zz4K');
+        background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMjZweCIgaGVpZ2h0PSIyNnB4IiB2aWV3Qm94PSIwIDAgMjYgMjYiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI2IDI2IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxjaXJjbGUgb3BhY2l0eT0iMC4xIiBmaWxsPSIjRkZGRkZGIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgY3g9IjEzIiBjeT0iMTMiIHI9IjEyIi8+DQoJPHBhdGggb3BhY2l0eT0iMC41IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTE5LjM2Myw2LjYzN0MyMC45OTIsOC4yNjYsMjIsMTAuNTE2LDIyLDEzYzAsNC45NjktNC4wMzEsOS05LDkNCgkJYy00Ljk3LDAtOS00LjAzMS05LTljMC0yLjQ4NCwxLjAwNy00LjczNCwyLjYzNi02LjM2M0w0LjUxNSw0LjUxNkMyLjM0Myw2LjY4OCwxLDkuNjg4LDEsMTNjMCw2LjYyNyw1LjM3MywxMiwxMiwxMg0KCQljNi42MjcsMCwxMi01LjM3MywxMi0xMmMwLTMuMzEzLTEuMzQ1LTYuMzEzLTMuNTE2LTguNDg0TDE5LjM2Myw2LjYzN3oiLz4NCiAgICA8YW5pbWF0ZVRyYW5zZm9ybSAgdHlwZT0icm90YXRlIiBmaWxsPSJyZW1vdmUiIHJlc3RhcnQ9ImFsd2F5cyIgYWNjdW11bGF0ZT0ibm9uZSIgY2FsY01vZGU9ImxpbmVhciIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGFkZGl0aXZlPSJyZXBsYWNlIiBmcm9tPSIwIDEzIDEzIiBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIGF0dHJpYnV0ZVR5cGU9InhtbCIgdG89IjM2MCAxMyAxMyIgZHVyPSIwLjZzIj48L2FuaW1hdGVUcmFuc2Zvcm0+DQo8L2c+DQo8L3N2Zz4=);
+        margin-right: 8px;
+        opacity: 0.5;
+        width: 16px;
+        height: 16px;
+      }
+    }
+    &.signup {
+      position: relative;
+      @extend .panel;
+      .complex-tip {
+        display: block;
+      }
+    }
+  }
+  .hint {
+    font-size: 0.7em;
+    color: $color-dark;
+    line-height: 1.2em;
+  }
+  .message {
+    font-size: 0.85em;
+    line-height: 1.2em;
+    padding: 0.6em 0.8em;
+  }
+  .complex-tip {
+    display: none;
+    // position: absolute;
+    background: $color-clear;
+    width: 100%;
+    z-index: 10;
+  }
+}
+.inline-field {
+  .inline-input {
+    vertical-align: middle;
+    width: auto;
+    display: inline-table;
+    margin-right: 0.5em;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

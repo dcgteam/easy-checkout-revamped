@@ -1,0 +1,53 @@
+@import "lib/_normalize";
+@import "lib/font-awesome/font-awesome.scss";
+@import "lib/bourbon/bourbon";
+@import "lib/vars";
+@import "lib/neat/neat";
+@import "lib/loading";
+@import "lib/ui";
+
+$path-logo: 'http://d3p6fknh6dkh4d.cloudfront.net/custom/content/themes/Estoque/Imagens/logo.png?v1' !default;
+
+@import "custom/custom";
+
+.EasyCheckoutStep,html {
+  font-size: 14px;
+  line-height: 1.4em;
+  color: $color-darker;
+  background: $color-lightness;
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  font-family: $global-font-family;
+}
+
+.EasyCheckoutStep {
+  min-width: 320px;
+  @include media( $small ) {
+    //CORE-12021 padding-bottom: 106px;
+    padding-bottom: 121px;
+  }
+  @include media( $tablet-only ) {
+    padding-bottom: 159px;
+  }
+  overflow: hidden;
+  overflow-y: scroll;
+  &:before,&:after {
+    opacity: 0;
+    content: "";
+  }
+  &.loading {
+    // mixin colocado no lib/_loading.scss
+    @include loading;
+    @include overlay;
+    @include loading-fixed;
+    overflow: hidden;
+    &.loading-payment {
+      @include loading-payment;
+    }
+  }
+}
+
+@import "custom/mobile";
+@import "custom/safari";
+@import "custom/msie";

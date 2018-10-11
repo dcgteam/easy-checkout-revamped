@@ -1,0 +1,93 @@
+#signup-form {
+  .spacer {
+    @include media($tablet) {
+      &:first-child {
+        padding-right: 2em;
+      }
+      &:last-child {
+        padding-left: 2em;
+        border-left: 2px solid #DDD;
+      }
+    }
+  }
+  .people {
+    display: block;
+  }
+  .is-cnpj {
+    display: none;
+  }
+  .signup-cnpj {
+    .is-cpf {
+      display: none;
+    }
+    .is-cnpj {
+      display: block;
+    }
+  }
+  .social-signin-account {
+    // margin-top: 22px;
+    padding-right: 0.5em;
+    float: right;
+    text-align: center;
+    // width: 50%;
+    button {
+      margin-right: 0.5em;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .line {
+      display: none;
+      height: 1px;
+      background: $color-light;
+      margin-top: -1.25em;
+      margin-bottom: 1.6em;
+    }
+    .title {
+      background: $color-clear;
+        padding: 0 1em;
+        display: inline-block;
+        margin-bottom: 0.6em;
+    }
+    .buttons {
+      white-space: nowrap;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .social-signin {
+      padding-right: 0.5em;
+    }
+    @include media($tablet-only) {
+      // margin-top: 6px;
+      // max-width: 300px;
+      .social-signin {
+        text-align: right;
+      }
+      .title {
+        margin-bottom: 0;
+        padding: 0; 
+        display: block;
+      }
+    }
+  }
+  
+  @include media($mobile-only) {
+    .modal-title {
+      padding-bottom: 0;
+    }
+    .social-signin-account {
+      display: block;
+      float: none;
+      max-width: none;
+      text-align: left;
+      padding-bottom: 1em;
+      width: auto;
+      .social-signin {
+        text-align: left;
+      }
+      .title {
+        padding: 0;
+      }
+    }
+  }
+}

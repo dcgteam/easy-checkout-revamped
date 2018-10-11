@@ -1,0 +1,35 @@
+@include media($mobile-only) {
+  .EasyCheckoutStep {
+    position: relative;
+    overflow-y: auto;
+    &.themodal-lock {
+      .wd-easy-checkout {
+        position: absolute;
+        height: 100%;
+        overflow: hidden;
+      }
+    }
+    .themodal-overlay {
+    //   overflow: visible;
+    //   position: absolute;
+      // background-color: transparent;
+      // left: 0 !important;
+    }
+    .the-modal {
+      position: relative;
+      // @include transition-duration(0);
+    }
+    .wd-easy-checkout, #scene {
+      overflow: hidden;
+      position: relative;
+    }
+  }
+  body.loading {
+    overflow: hidden;
+    &:before {
+      position: fixed; }
+  }
+  html {
+    // margin-right: 0 !important;
+  }
+}

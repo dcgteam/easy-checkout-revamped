@@ -1,0 +1,79 @@
+﻿/** 
+* Variaveis v0.0.1
+* Criado em: 04/02/2015
+*/
+
+// -------- efeitos para cores
+$color-tint: 20% !default;
+$color-shade: 10% !default;
+$color-alpha-shadow: 0.2 !default;
+
+// escala de cinza
+$color-clear: #FFF !default;
+$color-empty: $color-clear !default;
+
+/** cores */
+$color-brand: #0a7aca !default;   /// cor referencia da marca
+$color-primary: $color-brand !default;
+$color-success: #008c20 !default;
+$color-error: #bf0711 !default;
+$color-attention: #ffd600 !default;
+$color-warning: #DF7E00 !default;
+$color-info: #31708f !default;
+$color-representative-btn: #ffd600 !default;
+
+/*** ESCALAS de CINZA */
+$color-dark: #666 !default;  // escuro 
+$color-darker: shade($color-dark,40%) !default;
+$color-darkened: tint($color-dark,40%) !default;
+
+$color-light: #DDD !default; // claro
+$color-lighted: shade($color-light,10%) !default;
+$color-lightness: tint($color-light,50%) !default;
+
+
+/**
+* Cores secundarias
+* (cores com referencia a cores primarias, Alpha, Tint, Shadow, Darken, Lighten, etc)
+*/
+$color-button: $color-primary !default;
+$color-nav: $color-dark !default;
+$color-shadow: rgba(#000, $color-alpha-shadow) !default;
+$color-shadow-hard: rgba(#000, $color-alpha-shadow*2) !default;
+
+// -------- cores de textos
+$color-text: #333 !default;
+$color-text-higlight: #6eb200 !default;
+$color-text-input: #999 !default;
+$color-text-button: #FFF !default;
+$color-text-light: #F4F4F4 !default;
+$color-text-link: $color-primary !default;
+
+// -------- fontes
+$global-font-size: 14px !default;
+$global-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+// -------- tempos
+$time: 0.18s !default;
+// -------- efeitos do tempo
+$fx: linear !default; //cubic-bezier(.11,.96,.78,1) !default;
+$fx-out: cubic-bezier(.96,.11,.1,.78) !default;
+
+$buttons-gradient: false !default;
+$buttons-border-radius: 0 !default;
+
+$color-steps-fill: $color-success !default;
+$color-steps-empty: $color-lightness !default;
+
+/**
+* Config NEAT - Grid framework
+*/
+//$golden: 1.618em;
+$grid-columns: 16 !default;
+$gutter: 0em!default;
+$max-width: 100% !default;
+
+
+@mixin fx-box-shadow(){
+  box-shadow: 0 1px 1px $color-shadow;
+}

@@ -1,0 +1,695 @@
+.basket {
+	&.basket-outofstock {
+		.title {
+			strong {
+				color: $color-error;
+			}
+			.badge {
+				background-color: $color-error;
+			}
+			> small {
+				color: $color-error;
+			}
+		}
+		.btn-outline {
+			.icon {
+				color: $color-error;
+			}
+		}
+	}
+
+	&.basket-partiallyoutofstock {
+		.title {
+			strong {
+				color: $color-warning;
+			}
+			.badge {
+				background-color: $color-warning;
+			}
+			> small {
+				color: $color-warning;
+			}
+		}
+		.btn-outline {
+			.icon {
+				color: $color-warning;
+			}
+		}
+	}
+
+	.seller-data{
+		color: #777;
+	}
+}
+
+.header {
+	.basket-data{
+		max-height: 0;
+		.basket-data-container {
+			border: 1px solid $color-light;
+			background: $color-lightness;
+			@include transform(translateY(-100%));
+			@include transition(transform $time);
+		}
+	}
+}
+
+.basket-data {
+	&.floating {
+		position: absolute;
+		z-index: 2;
+		width: 100%;
+		box-shadow: 0px 18px 30px -8px rgba(0,0,0,0.3);
+	}
+	margin-top: -32px;
+	overflow: hidden;
+	@include transition(max-height $time);
+	.basket-data-container {
+		margin-bottom: 28px;
+	}
+	.address-delivery {
+		margin-bottom: 1em;
+		margin-top: 30px;
+		.wrapper {
+			border: 1px solid $color-light;
+			min-height: 150px;
+			background-color: $color-empty;
+			> div {
+				padding: 1em;
+				&:first-child {
+					background-color: shade($color-lightness, 4%);
+					border-bottom: 1px solid $color-light;
+				}
+			}
+			.deadline {
+				margin-top: 4px;
+				display: inline-block;
+			}
+
+
+		}
+
+
+		&.has-sales-representative {
+			> .column{
+				@include media( $tablet ) {
+					@include span-columns(4 of 12);
+					@include omega(3n);
+				}
+
+				.representative {
+					//border: thin solid $color-light;
+					//border-radius: $border-radius;
+					//cursor: pointer;
+					//padding: 8px;
+					//border: 1px solid $color-light;
+					position: relative;
+					width: 100%;
+					padding: 5px;
+
+					.photo {
+						@extend %representative-photo;
+					}
+
+					.info {
+						float: left;
+						width: 75%; /*80%;*/
+						padding-left: 9px;
+						white-space: nowrap;
+						span {
+							display: block;
+							text-overflow: ellipsis;
+							width: 100%;
+							white-space: nowrap;
+							overflow: hidden;
+
+							&.name {
+							  font-weight: bold;
+							  font-size: 13px;
+							}
+							&.email {
+							  font-size: 11px;
+							}
+						}
+					}
+				}
+
+			}
+		}
+	}
+	.basket-frete {
+		td {
+			//border-bottom: none;
+		}
+	}
+	.basket-total {
+		font-size: 1.4em;
+		font-weight: bold;
+		@include media($mobile-only) {
+			font-size: inherit;
+		}
+	}
+	img {
+		max-width: 64px;
+		max-height: 64px;
+		text-align: center;
+		float: right;
+	}
+	td {
+		vertical-align: middle;
+	}
+	&.panel {
+		padding-top: 3em;
+	}
+	table {
+		border: 1px solid #DDD;
+		font-size: 1em;
+		background: $color-empty;
+		th.value,td.value,td.total, {
+			white-space: nowrap;
+			text-align: right;
+		}
+		thead {
+			th {
+				background-color: shade($color-lightness, 4%);
+				white-space: nowrap;
+				@include media($mobile-only) {
+					white-space: normal;
+				}
+				&.name {
+					text-indent: -9999px;
+					@include media($mobile-only) {
+						text-indent: initial;
+					}
+				}
+			}
+		}
+		tbody {
+			tr {
+				&.outofstock,
+				&.undeliverable {
+					color: $color-error;
+					background-color: tint($color-error, 80%);
+					.quant {
+						font-weight: bold;
+					}
+					img {
+						border: 1px solid $color-error;
+					}
+				}
+
+				&.partiallyoutofstock {
+					color: $color-warning;
+					background-color: tint($color-warning, 90%);
+					.quant {
+						font-weight: bold;
+					}
+					img {
+						border: 1px solid $color-warning;
+					}
+				}
+
+				&.basket-subtotal,
+				&.basket-frete,
+				&.basket-discount {
+					td.photo,
+					td.name,
+					td.quant {
+						border-bottom: none;
+					}
+					td {
+						border-bottom-style: dashed;
+					}
+					td.right {
+						&:after {
+							content: ':';
+						}
+					}
+				}
+				&.basket-total {
+					td {
+						border-top: 1px solid $color-light;
+					}
+				}
+				td {
+					&.value {
+						font-weight: bold;
+					}
+					.product-name {
+						font-weight: bold;
+					}
+					.wrap {
+						margin: .4em 0;
+						&.alert-info {
+							padding: 0.4em 0.8em;
+							font-size: 12px;
+							display: inline-block;
+
+							span{
+								word-break: break-all;
+							}
+						}
+						&.gift-certificate-deadline {
+							padding: 0.4em 0.8em;
+							font-size: 12px;
+							display: inline-block;
+						}
+					}
+
+					.nested-services {
+
+						$serviceImageSize: 42px;
+
+						background: #f4f4f4;
+						border: 1px dashed #dfdfdf;
+						color: rgb(85, 85, 85);
+						display: inline-block !important;
+						clear: both;
+						margin: 6px 0;
+						font-size: 12px;
+
+						.service-wrapper {
+							display: block;
+							border-bottom: 1px dashed #dfdfdf;
+							padding: 0 2px;
+
+							&:last-child{
+								border-bottom: 0;
+							}
+							
+							span{
+								vertical-align: middle;
+
+								&.inner-item-name{								
+								    padding: 10px;
+								    display: inline-block;
+								}
+
+								strong {
+									white-space: nowrap;
+								}
+							}
+
+						}		
+
+					}
+
+
+					&.price {
+						span, del {
+							padding-left: 10px;
+							@include media($mobile-only) {
+								padding-left: 0;
+							}
+						}
+						div {
+							position: relative;
+						}
+						.service-price{
+							display: block;
+							padding-left: 10px;
+						}
+						.service-price:before {
+							content: '+';
+							position: absolute;
+							left: 0;
+						}
+					}
+					dl {
+						font-size: 12px;
+						dt {
+							&:after {
+								content: ": ";
+							}
+						}
+
+						&.list {
+							dt {
+								float: left;
+								padding-right: 4px;
+								font-weight: bold;
+							}
+						}
+
+						&.inline {
+							dt, dd { display: inline-block; }
+							dd {
+								&:not(:last-child):after {
+									content: " | ";
+								}
+							}
+						}
+					}
+				}
+
+				/* &.outofstock {
+					td.photo {
+						&:before {
+							font-family: FontAwesome;
+							content: "\f071";
+							position: absolute;
+							left:-10px;
+						}
+					}
+				} */
+
+				&.basket-discount {
+					td.total {
+						&:before {
+							content: "-";
+						}
+					}
+				}
+
+			}
+
+			.name{
+
+				.customer-relation-name{
+					display: none;
+				}
+
+			}
+		}
+		tfoot {
+			font-size: 1.5em;
+			font-weight: 700;
+		}
+		thead {
+			th {
+				border-width: 2px;
+			}
+		}
+		tr {
+			&:last-child {
+				td {
+					border-width: 2px;
+				}
+			}
+		}
+	}
+
+	.point-of-sale-data{
+		padding: 7px 0;
+	    margin-top: 7px;
+	    border-top: 1px dashed $color-light;
+	}
+
+	@include media($mobile-only) {
+		table,thead,tbody,tr,th,td {
+			display: block;
+		}
+		table thead {
+			th {
+				display: none;
+			}
+			.name {
+				display: block;
+			}
+		}
+		table tbody {
+			tr {
+				@include row;
+				position: relative;
+				padding: 0 1em 1em;
+				&.basket-subtotal,&.basket-frete,&.basket-total,&.basket-discount {
+					text-align: right;
+					padding: 0 1em;
+					border-bottom-style: dashed;
+					&:last-child {
+						border-bottom-style: none;
+					}
+					td {
+						border: none;
+						display: none;
+						line-height: 2.5em;
+						padding: 0;
+					}
+					.right,.total {
+						display: inline-block;
+					}
+					.right{
+						float: unset !important;
+					}
+				}
+				&.product {
+					td.price {
+						&::before {
+							content: 'Unidade:';
+						}
+					}
+					td.taxation-amount {
+						&::before {
+							content: 'S.T:';
+						}
+					}
+					td.payment-term {
+						&::before {
+							content: 'Prazo:';
+						}
+					}
+					td.eta{
+						&::before {
+							content: 'Entrega:';
+						}
+					}
+				}
+			}
+			td {
+				border: none;
+				&.photo {
+				  float: left;
+				  padding: 0;
+				  margin: 10px 20px 0 0;
+				  width: 64px;
+				  height: 64px;
+				}
+				&.name {
+					font-weight: normal;
+					padding-bottom: 0;
+					margin-left: 74px;
+				}
+				&.quant {
+				  background-color: $color-primary;
+				  position: absolute;
+				  top: 8px;
+				  left: 64px;
+				  padding: 0px;
+				  min-width: 22px;
+				  line-height: 22px;
+				  border-radius: 50%;
+				  height: 22px;
+				  color: $color-empty;
+				  text-align: center;
+				}
+				&.value, &.price, &.tax-amount, &.taxation-amount, &.payment-term, &.eta {
+					text-align: left;
+					padding: 0 1em 0 1em;
+					margin-left: 74px;
+					font-size: 12px;
+					&::before {
+						// content: 'Subtotal:';
+						padding-right: 4px;
+					}
+				}
+				&.tax-amount {
+					div,del {
+						display: inline;
+					}
+					&::before {
+						content: 'Taxa:';
+					}
+				}
+				&.price {
+					div,del {
+						display: inline;
+					}
+				}
+			}
+			tr {
+				border-bottom: 1px solid $color-light;
+			}
+		}
+		th {
+			.label,&.quant,&.price,&.value {
+				display: none;
+			}
+		}
+		th.name .label {
+			display: block;
+		}
+	}
+
+	// BASKET GROUPED
+	.grouped-basket{
+		td.quant{
+			text-align: center;
+		}
+
+		th.name{
+			text-indent: 0;
+		}
+	}
+	//
+}
+
+/// CONDICIONAIS
+/// quando está visivel
+.basket-data-show {
+	.basket {
+		margin-bottom: 1em;
+		.basket-button {
+			.title {
+				line-height: 36px;
+			}
+			.icon i.fa {
+				@extend .fa-caret-up;
+			}
+		}
+		// .basket-data {
+		//     max-height: 1600px;
+		// }
+		.resume-address,.resume-delivery {
+			// display: none;
+		}
+		.basket-data-container {
+			@include transform(translateY(0%));
+		}
+	}
+	#summary {
+		position: static;
+		.container {
+			@include padding( null $gutter/2 );
+		}
+	}
+}
+
+// quando esta na pagina de pagamento
+.payment {
+	.basket .basket-button>.btn {
+		.title {
+			line-height: 13px;
+		}
+		.sub-title {
+			height: 13px;
+			opacity: 1;
+		}
+	}
+	&.basket-data-show {
+		.basket .basket-button>.btn {
+			.title {
+				line-height: 36px;
+			}
+			.sub-title {
+				height: 0;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.basket {
+	position: relative;
+	z-index: 20;
+	margin-bottom: 0;
+	margin-top: -30px;
+	@include clearfix;
+	.basket-button {
+		position: relative;
+		z-index: 10;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		max-width: 540px;
+		width: 100%;
+		&>.btn {
+			  height: 56px;
+			overflow: hidden;
+			.title {
+				margin-right: 56px;
+				line-height: 36px;
+				@include transition(line-height .2s);
+				.number {
+					display: none;
+				}
+				@include media($mobile-only) {
+					.badge {
+						display: none;
+					}
+					.number {
+						display: inline-block;
+					}
+				}
+			}
+			.icon, .title {
+				vertical-align: middle;
+			}
+			.icon {
+				height: 38px;
+				width: 48px;
+				position: absolute;
+				top: 8px;
+				right: 0;
+				text-align: center;
+				border-left: 1px solid $color-light;
+				i.fa {
+					color: $color-darker;
+					@extend .fa-caret-down;
+					font-size: 2em;
+					line-height: 38px;
+				}
+			}
+		}
+		.sub-title {
+			overflow: hidden;
+			@include transition(all .2s);
+		}
+		.sub-title>small {
+			white-space: nowrap;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.resume-address {
+			text-overflow: ellipsis;
+			max-width: 40%;
+			overflow: hidden;
+			.title {
+				display: none;
+				margin-right: 0px;
+			}
+			@include media($mobile-only) {
+				.content {
+					display: none;
+				}
+				.title {
+					display: inline;
+				}
+				.label {
+					display: none;
+				}
+			}
+		}
+	}
+	.bottom-close {
+		  width: 32px;
+		  height: 32px;
+		  margin: 0 auto -39px;
+		  text-align: center;
+		  background-color: $color-empty;
+		  border: 1px solid $color-light;
+		  border-radius: 100%;
+		  cursor: pointer;
+		  i {
+			line-height: 28px;
+		  }
+		@include media( $mobile-only ) {
+			  margin-top: 15px;
+		}
+	}
+}
+
+.loyalty-points{color: $color-success;}
+.bold{font-weight:bold;}
+
+.themodal-overlay.payment-debit .the-modal.opened .the-modal-container{height:550px;}
+.themodal-overlay.payment-debit .the-modal.opened .close{display:none;}

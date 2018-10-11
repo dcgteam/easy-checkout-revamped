@@ -1,0 +1,151 @@
+$fa-font-path:"/Custom/Content/Widgets/easy.checkout/Fonts";
+@import "font-awesome/variables";
+@import "font-awesome/path";
+@import "font-awesome/core";
+
+@import "neat/neat";
+
+@import "font";
+@import "grid";
+@import "btn";
+@import "form";
+@import "nav";
+@import "tabs";
+@import "panel";
+@import "modal";
+
+table {
+  width: 100%;
+  margin-bottom: 1em;
+  th {
+    text-align: left;
+  }
+  td {
+    vertical-align: middle;
+  }
+  td,th {
+    padding: 10px 14px;
+    border: none;
+    border-bottom: 1px solid $color-light;
+  }
+}
+tfoot {
+  background: $color-lightness;
+  border-top: 2px solid $color-light;
+  border-bottom: 1px solid $color-light;
+  td {
+    border: none;
+  }
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.hide {
+  display: none;
+  visibility: hidden;
+}
+
+dd,dl {
+  margin:0; 
+}
+
+.box-pull {
+  box-shadow: 0 1px 0 $color-shadow;
+}
+.box-push {
+  box-shadow: 0 -1px 0 $color-shadow;
+}
+
+.inline-row {
+  display: table;
+  width: 100%;
+  .cel-main {
+    display: table-cell;
+    width: 100%;
+  }
+  .cel-append {
+    display: table-cell;
+  }
+}
+
+.badge {
+  background: $color-dark;
+  color: $color-clear;
+  font-size: 12px;
+  padding: 0 0.8em 0 0.7em;
+  border-radius: 1em;
+  text-shadow: none;
+  text-align: center;
+  display: inline-block;
+  line-height: 1.8em;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-weight: 400;
+  &.success {
+    background: $color-success;
+  }
+  &.attention {
+    color: shade($color-attention, 40%);
+    background-color: tint($color-attention, 80%);
+  }
+}
+
+// .label {
+//   text-transform: uppercase;
+//   display: block;
+//   font-size: 0.7em;
+//   padding: 0.45em 1.1em;
+//   text-align: center;
+//   background: #EEE;
+// }
+
+.label-info {
+    color: $color-text-button;
+    background: $color-primary;
+    border-bottom: 1px solid shade($color-primary, $color-shade);
+}
+
+[data-toggle="popover"] {
+  position: relative;
+  cursor: pointer;
+  small {
+    &.left {
+      right: -90px;
+      &:after {
+        left: 80px;
+        margin-left: 0;
+      }
+    }
+    @include transition(opacity $time $fx $time/2, bottom $time $fx);
+    background: $color-darkened;
+    color: $color-empty;
+    width: 180px;
+    white-space: normal;
+    text-align: left;
+    position: absolute;
+    bottom: 1.2em;
+    padding: 6px;
+    right: -15px;
+    opacity: 0;
+    visibility: hidden;
+    bottom: 0%;
+    border-radius: 3px;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      bottom: 100%;
+     
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      left: 100%;
+      bottom: -4px;
+      margin-left: -25px;
+      @include triangle(8px, $color-darkened, down);
+    }
+  }
+}

@@ -1,0 +1,105 @@
+// ---- nav ----
+.navigator {
+  font-size: .7rem;
+  background: $color-nav;
+  a {
+    color: $color-text-light;
+    text-decoration: none;
+  }
+  h3,h4,h5 {
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include clearfix;
+    li {
+      position: relative;
+      white-space: nowrap;
+      float: left;
+      &:last-child a:after {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+.navigator-primary-hover {
+  &:hover {
+    background: $color-primary;
+    &:before {
+      border-color: $color-text-light transparent transparent transparent;
+    }
+    &:after {
+      visibility: hidden;
+    }
+  }
+}
+
+.navigator-primary-item {
+  padding: 15px 18px;
+  text-transform: uppercase;
+  line-height: 20px;
+  display: block;
+  font-weight: 700;
+  //@extend .font-face-title;
+  @extend .text-pull;
+  &:hover {
+    @extend .navigator-primary-hover;
+  }
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    min-height: 18px;
+    background: rgba($color-text-light,0.2);
+    position: relative;
+    left: 20px;
+    vertical-align: middle;
+  }
+}
+
+.navigator-sub-items {
+  min-width: 220px;
+  background-color: $color-nav;
+  padding: 28px 30px;
+  border-top: 2px solid shade( $color-button, $color-shade);
+  li {
+    display: block;
+    float: none;
+    padding-bottom: .65em;
+    &:last-child {
+      padding-bottom: 0;
+      a:after {
+        visibility: inherit;
+      }
+    }
+  }
+  a {
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.2em;
+    font-size: 1.1em;
+    .icon {
+      @extend .dropdown-icon-right; }
+    &:hover {
+      color: $color-primary; }
+    &.veja-mais {
+      @extend .btn;
+      @extend .btn-small;
+      @extend .btn-icon-plus;
+      @extend .icon-after;
+      border: none;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      background-color: $color-primary;
+      margin-top: em(10px);
+      .icon {
+        display: none;
+      }
+    }
+  }
+}

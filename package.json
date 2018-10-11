@@ -1,0 +1,28 @@
+{
+	"name": "reference-bootstrap",
+	"private": true,
+	"description": "Usado para rotinas do gulp",
+	"version": "0.0.1",
+	"start": "node server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"bootstrap": "^4.1.1",
+		"connect": "^3.6.5",
+		"cors": "^2.8.4",
+		"font-awesome": "^4.7.0",
+		"gulp": "^3.9.1",
+		"gulp-debug": "^2.1.2",
+		"gulp-live-server": "0.0.31",
+		"gulp-notify": "^2.2.0",
+		"gulp-rename": "^1.2.0",
+		"gulp-sass": "^3.1.0",
+		"gulp-uglifycss": "^1.0.8",
+		"gulp-util": "^3.0.6",
+		"gulp-watch": "^4.1.0",
+		"http": "0.0.0",
+		"node-sass": "^4.7.2",
+		"serve-static": "^1.13.1"
+	}
+}
