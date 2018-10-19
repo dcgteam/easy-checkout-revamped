@@ -6491,11 +6491,12 @@ dd, dl {
         height: 1em;
         left: 0; } }
 
+.delivery-list-products table tr td {
+  padding: 1.4rem 1rem; }
+
 .delivery-list {
   background: #f1f1f1;
   position: relative; }
-  .delivery-list.delivery-list-products {
-    background: #FFF; }
   .delivery-list strong.has-discount {
     font-weight: normal; }
     .delivery-list strong.has-discount .price {
