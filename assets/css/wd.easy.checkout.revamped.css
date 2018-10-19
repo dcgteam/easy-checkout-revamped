@@ -4056,7 +4056,7 @@ input[type="checkbox"] {
   background: #FFF;
   border: 1px solid #DDD;
   /*border-left: 3px solid $color-success;*/
-  padding: 1rem 1.4rem 1.4rem;
+  padding: 1.4rem 1.4rem 1.4rem;
   margin-bottom: 1em; }
   .panel::after, .field .validation.signup::after {
     clear: both;
@@ -6492,10 +6492,10 @@ dd, dl {
         left: 0; } }
 
 .delivery-list {
-  background: #FFF;
-  position: relative;
-  border-left: 1px solid #DDD;
-  border-right: 1px solid #DDD; }
+  background: #f1f1f1;
+  position: relative; }
+  .delivery-list.delivery-list-products {
+    background: #FFF; }
   .delivery-list strong.has-discount {
     font-weight: normal; }
     .delivery-list strong.has-discount .price {
