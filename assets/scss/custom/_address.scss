@@ -133,11 +133,20 @@
 	}
 }
 
+.delivery-list-products {
+
+	table {
+		tr { 
+			td {
+				padding: 1.4rem 1rem;
+			}
+		}
+	}
+}
+
 .delivery-list {
-	background: $color-clear;
+	background: tint($color-lightness,15%);
 	position: relative;
-	border-left: 1px solid $color-light;
-	border-right: 1px solid $color-light;
 
 	strong.has-discount {
 		font-weight: normal;
