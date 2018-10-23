@@ -193,9 +193,12 @@ input[type="checkbox"], input[type="radio"] {
 /* FONT PATH
  * -------------------------- */
 @font-face {
+  /* 
+	ATENÇÃO: Foram colocados caminhos absolutos nas fontes SOMENTE para fins de prototipação.
+  */
   font-family: 'FontAwesome';
-  src: url("Fonts/fontawesome-webfont.eot?v=4.3.0");
-  src: url("Fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("Fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("Fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("Fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+  src: url("http://reference.corecommerce.com.br/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.eot?v=4.3.0");
+  src: url("http://reference.corecommerce.com.br/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("http://reference.corecommerce.com.br/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("http://reference.corecommerce.com.br/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("http://reference.corecommerce.com.br/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -2113,9 +2116,12 @@ html {
 /* FONT PATH
  * -------------------------- */
 @font-face {
+  /* 
+	ATENÇÃO: Foram colocados caminhos absolutos nas fontes SOMENTE para fins de prototipação.
+  */
   font-family: 'FontAwesome';
-  src: url("/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.eot?v=4.3.0");
-  src: url("/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+  src: url("http://reference.corecommerce.com.br/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.eot?v=4.3.0");
+  src: url("http://reference.corecommerce.com.br/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("http://reference.corecommerce.com.br/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("http://reference.corecommerce.com.br/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("http://reference.corecommerce.com.br/Custom/Content/Widgets/easy.checkout/Fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -6321,6 +6327,43 @@ dd, dl {
     margin: 10px 0;
     text-align: right; }
 
+.panel.panel-delivery h3, .field .panel-delivery.validation.signup h3 {
+  margin-top: 3rem; }
+  .panel.panel-delivery h3:first-child, .field .panel-delivery.validation.signup h3:first-child {
+    margin-top: 0; }
+
+.fulfillment {
+  margin-bottom: 2rem; }
+  .fulfillment:last-child {
+    margin-bottom: 0; }
+  .fulfillment .delivery-list-products {
+    width: 100%;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px dashed #DDD; }
+    .fulfillment .delivery-list-products table {
+      margin-bottom: 0; }
+      .fulfillment .delivery-list-products table tr td {
+        padding: 1.4rem 1rem; }
+      .fulfillment .delivery-list-products table tr:last-child td {
+        border-bottom: none; }
+  .fulfillment .delivery-list {
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 1px solid #DDD; }
+  @media screen and (min-width: 1025px) {
+    .fulfillment {
+      display: table; }
+      .fulfillment .delivery-list-products {
+        width: 50%;
+        display: table-cell;
+        vertical-align: top;
+        border-bottom: 1px solid #DDD; }
+      .fulfillment .delivery-list {
+        width: 50%;
+        display: table-cell;
+        vertical-align: top;
+        border-top: 1px solid #DDD; } }
+
 .header {
   background: #FFF;
   margin-bottom: 4rem;
@@ -6490,9 +6533,6 @@ dd, dl {
         margin: auto 4px;
         height: 1em;
         left: 0; } }
-
-.delivery-list-products table tr td {
-  padding: 1.4rem 1rem; }
 
 .delivery-list {
   background: #f1f1f1;

@@ -18,3 +18,74 @@
 		}
 	}
 }
+
+
+.panel {
+
+	&.panel-delivery {
+
+		h3 {
+			margin-top: 3rem;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+
+.fulfillment {
+	margin-bottom: 2rem;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	.delivery-list-products {
+		width: 100%;
+		border-top: 1px solid $color-light;
+		border-bottom: 1px dashed $color-light;
+
+		table {
+			margin-bottom: 0;
+
+			tr { 
+				td {
+					padding: 1.4rem 1rem;
+				}
+
+				&:last-child {
+					td {
+						border-bottom: none;
+					}
+				}	
+			}
+		}
+	}
+
+	.delivery-list {
+		width: 100%;
+		padding: 1rem;
+		border-bottom: 1px solid $color-light;
+	}
+
+	@include media($desktop) {
+		display: table;
+
+		.delivery-list-products { 
+			width: 50%;
+			display: table-cell;
+			vertical-align: top;
+			border-bottom: 1px solid $color-light;
+		}
+
+		.delivery-list { 
+			width: 50%;
+			display: table-cell;
+			vertical-align: top;
+			border-top: 1px solid $color-light;
+		}	
+	}
+	
+}
